@@ -87,11 +87,11 @@ public class SampleWasmFilterTransformer {
         if (currentWasmModule == null || !currentWasmModule.equals(replacerModule)) {
             // TODO: here we are making strong assumptions on where the compiled wasm modules will be placed
             try (InputStream moduleInputStream = SampleWasmFilterTransformer.class.getResourceAsStream("/wasm/" + replacerModule)) {
-                currentWasmInstance = Module.build(moduleInputStream).instantiate();
-                replacerFunction = currentWasmInstance.getExport("replace");
-                alloc = currentWasmInstance.getExport("alloc");
-                dealloc = currentWasmInstance.getExport("dealloc");
-                memory = currentWasmInstance.getMemory();
+                currentWasmInstance = Module.builder(moduleInputStream).build().instantiate();
+                replacerFunction = currentWasmInstance.export("replace");
+                alloc = currentWasmInstance.export("alloc");
+                dealloc = currentWasmInstance.export("dealloc");
+                memory = currentWasmInstance.memory();
                 currentWasmModule = replacerModule;
             }
             catch (IOException e) {
