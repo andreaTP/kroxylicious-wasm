@@ -60,7 +60,9 @@ class SampleFilterIntegrationTest {
 
     @AfterEach
     public void afterEach() {
-        test.close();
+        if(test != null) {
+            test.close();
+        }
     }
 
     /**

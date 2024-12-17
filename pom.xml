@@ -20,16 +20,16 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <chicory.version>0.0.6</chicory.version>
-        <kroxylicious.version>0.7.0</kroxylicious.version>
+        <kroxylicious.version>0.9.0</kroxylicious.version>
 
-        <junit.version>5.10.1</junit.version>
+        <junit.version>5.11.3</junit.version>
         <log4j.version>2.21.1</log4j.version>
         <mockito.version>5.7.0</mockito.version>
         <assertj-core.version>3.24.2</assertj-core.version>
         <mockito.version>5.7.0</mockito.version>
         <kafka.version>3.7.0</kafka.version>
         <maven-surefire-plugin.version>3.2.5</maven-surefire-plugin.version>
-        <kroxylicious-testing-junit5-extension.version>0.8.1</kroxylicious-testing-junit5-extension.version>
+        <kroxylicious-testing-junit5-extension.version>0.10.0</kroxylicious-testing-junit5-extension.version>
         <micrometer-core.version>1.12.2</micrometer-core.version>
     </properties>
 
@@ -85,7 +85,11 @@
             <version>${kafka.version}</version>
             <scope>test</scope>
         </dependency>
-
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>2.18.1</version>
+        </dependency>
         <!-- third party dependencies - test -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>

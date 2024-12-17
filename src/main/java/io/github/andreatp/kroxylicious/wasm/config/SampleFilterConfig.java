@@ -1,5 +1,6 @@
 package io.github.andreatp.kroxylicious.wasm.config;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -24,6 +25,7 @@ public class SampleFilterConfig {
     /**
      * @param replacerModule the WASM module to be loaded
      */
+    @JsonCreator(mode = JsonCreator.Mode.DELEGATING)
     public SampleFilterConfig(@JsonProperty(required = true) String replacerModule) {
         this.replacerModule = replacerModule;
     }
