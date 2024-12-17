@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
 
+import com.dylibso.chicory.wasm.Parser;
 import io.github.andreatp.kroxylicious.wasm.config.SampleFilterConfig;
 import org.apache.kafka.common.compress.Compression;
 import org.apache.kafka.common.message.FetchResponseData;
@@ -18,8 +19,6 @@ import org.apache.kafka.common.utils.ByteBufferOutputStream;
 import com.dylibso.chicory.runtime.ExportFunction;
 import com.dylibso.chicory.runtime.Instance;
 import com.dylibso.chicory.runtime.Memory;
-import com.dylibso.chicory.runtime.Module;
-import com.dylibso.chicory.wasm.types.Value;
 
 import io.kroxylicious.proxy.filter.FilterContext;
 
@@ -88,7 +87,7 @@ public class SampleWasmFilterTransformer {
         if (currentWasmModule == null || !currentWasmModule.equals(replacerModule)) {
             // TODO: here we are making strong assumptions on where the compiled wasm modules will be placed
             try (InputStream moduleInputStream = SampleWasmFilterTransformer.class.getResourceAsStream("/wasm/" + replacerModule)) {
-                currentWasmInstance = Module.builder(moduleInputStream).build().instantiate();
+                currentWasmInstance = Instance.builder(Parser.parse(moduleInputStream)).build();
                 replacerFunction = currentWasmInstance.export("replace");
                 alloc = currentWasmInstance.export("alloc");
                 dealloc = currentWasmInstance.export("dealloc");
@@ -112,11 +111,11 @@ public class SampleWasmFilterTransformer {
         String originalString = new String(StandardCharsets.UTF_8.decode(in).array());
 
         int len = originalString.getBytes().length;
-        int ptr = alloc.apply(Value.i32(len))[0].asInt();
+        int ptr = (int) alloc.apply(len)[0];
         memory.writeString(ptr, originalString);
-        int outStringSize = replacerFunction.apply(Value.i32(ptr), Value.i32(len))[0].asInt();
+        int outStringSize = (int) replacerFunction.apply(ptr, len)[0];
         String outString = memory.readString(ptr, outStringSize);
-        dealloc.apply(Value.i32(ptr), Value.i32(len));
+        dealloc.apply(ptr, len);
 
         return ByteBuffer.wrap(outString.getBytes(StandardCharsets.UTF_8));
     }
