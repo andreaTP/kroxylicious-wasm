@@ -19,7 +19,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <chicory.version>1.0.0-M2</chicory.version>
+        <chicory.version>1.4.1</chicory.version>
         <kroxylicious.version>0.13.0</kroxylicious.version>
 
         <junit.version>5.11.3</junit.version>
@@ -38,7 +38,7 @@
         <!-- WASM interpreter runtime -->
         <dependency>
             <groupId>com.dylibso.chicory</groupId>
-            <artifactId>runtime</artifactId>
+            <artifactId>compiler</artifactId>
             <version>${chicory.version}</version>
         </dependency>
 

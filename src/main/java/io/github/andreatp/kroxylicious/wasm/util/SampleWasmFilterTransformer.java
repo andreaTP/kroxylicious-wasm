@@ -5,6 +5,8 @@ import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
 
+import com.dylibso.chicory.runtime.ByteArrayMemory;
+import com.dylibso.chicory.compiler.MachineFactoryCompiler;
 import com.dylibso.chicory.wasm.Parser;
 import io.github.andreatp.kroxylicious.wasm.config.SampleFilterConfig;
 import org.apache.kafka.common.compress.Compression;
@@ -87,7 +89,11 @@ public class SampleWasmFilterTransformer {
         if (currentWasmModule == null || !currentWasmModule.equals(replacerModule)) {
             // TODO: here we are making strong assumptions on where the compiled wasm modules will be placed
             try (InputStream moduleInputStream = SampleWasmFilterTransformer.class.getResourceAsStream("/wasm/" + replacerModule)) {
-                currentWasmInstance = Instance.builder(Parser.parse(moduleInputStream)).build();
+                currentWasmInstance = Instance
+                        .builder(Parser.parse(moduleInputStream))
+                        .withMemoryFactory(ByteArrayMemory::new)
+                        .withMachineFactory(MachineFactoryCompiler::compile)
+                        .build();
                 replacerFunction = currentWasmInstance.export("replace");
                 alloc = currentWasmInstance.export("alloc");
                 dealloc = currentWasmInstance.export("dealloc");
