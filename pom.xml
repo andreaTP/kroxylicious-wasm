@@ -30,7 +30,7 @@
         <kafka.version>4.0.0</kafka.version>
         <maven-surefire-plugin.version>3.2.5</maven-surefire-plugin.version>
         <kroxylicious-testing-junit5-extension.version>0.10.0</kroxylicious-testing-junit5-extension.version>
-        <micrometer-core.version>1.12.2</micrometer-core.version>
+        <micrometer-core.version>1.15.1</micrometer-core.version>
     </properties>
 
 
