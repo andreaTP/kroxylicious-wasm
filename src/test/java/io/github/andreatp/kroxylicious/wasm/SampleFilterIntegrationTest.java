@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
+import io.kroxylicious.proxy.config.NamedFilterDefinitionBuilder;
 import org.apache.kafka.clients.admin.Admin;
 import org.apache.kafka.clients.admin.NewTopic;
 import org.apache.kafka.clients.consumer.Consumer;
@@ -21,7 +22,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
 import io.kroxylicious.proxy.config.ConfigurationBuilder;
-import io.kroxylicious.proxy.config.FilterDefinitionBuilder;
 import io.kroxylicious.test.tester.KroxyliciousTester;
 import io.kroxylicious.testing.kafka.api.KafkaCluster;
 import io.kroxylicious.testing.kafka.common.BrokerCluster;
@@ -159,7 +159,8 @@ class SampleFilterIntegrationTest {
         FilterIntegrationTest(TestFilter... filters) {
             ConfigurationBuilder builder = proxy(cluster);
             for (TestFilter filter : filters) {
-                builder.addToFilters(new FilterDefinitionBuilder(filter.name()).withConfig(filter.config()).build());
+                builder.addToFilterDefinitions(new NamedFilterDefinitionBuilder(filter.name(), filter.name()).withConfig(filter.config()).build());
+                builder.addToDefaultFilters(filter.name);
             }
             tester = kroxyliciousTester(builder);
             producer = tester.producer();

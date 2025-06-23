@@ -20,14 +20,14 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <chicory.version>1.0.0-M2</chicory.version>
-        <kroxylicious.version>0.10.0</kroxylicious.version>
+        <kroxylicious.version>0.13.0</kroxylicious.version>
 
         <junit.version>5.11.3</junit.version>
         <log4j.version>2.21.1</log4j.version>
         <mockito.version>5.7.0</mockito.version>
         <assertj-core.version>3.24.2</assertj-core.version>
         <mockito.version>5.7.0</mockito.version>
-        <kafka.version>3.9.0</kafka.version>
+        <kafka.version>4.0.0</kafka.version>
         <maven-surefire-plugin.version>3.2.5</maven-surefire-plugin.version>
         <kroxylicious-testing-junit5-extension.version>0.10.0</kroxylicious-testing-junit5-extension.version>
         <micrometer-core.version>1.12.2</micrometer-core.version>
