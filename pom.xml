@@ -23,7 +23,7 @@
         <kroxylicious.version>0.15.0</kroxylicious.version>
 
         <junit.version>5.13.4</junit.version>
-        <log4j.version>2.25.1</log4j.version>
+        <log4j.version>2.25.2</log4j.version>
         <mockito.version>5.19.0</mockito.version>
         <assertj-core.version>3.27.4</assertj-core.version>
         <mockito.version>5.19.0</mockito.version>
