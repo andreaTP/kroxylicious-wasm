@@ -19,7 +19,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <chicory.version>1.5.1</chicory.version>
+        <chicory.version>1.5.2</chicory.version>
         <kroxylicious.version>0.16.0</kroxylicious.version>
 
         <junit.version>5.13.4</junit.version>
