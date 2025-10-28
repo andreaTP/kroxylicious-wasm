@@ -33,6 +33,17 @@
         <micrometer-core.version>1.15.5</micrometer-core.version>
     </properties>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.kroxylicious</groupId>
+                <artifactId>kroxylicious-bom</artifactId>
+                <version>${kroxylicious.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <!-- WASM interpreter runtime -->
@@ -46,16 +57,9 @@
         <dependency>
             <groupId>io.kroxylicious</groupId>
             <artifactId>kroxylicious-api</artifactId>
-            <version>${kroxylicious.version}</version>
             <scope>provided</scope>
         </dependency>
 
-        <dependency>
-            <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka-clients</artifactId>
-            <version>${kafka.version}</version>
-            <scope>provided</scope>
-        </dependency>
 
         <dependency>
             <groupId>io.micrometer</groupId>
@@ -68,7 +72,6 @@
         <dependency>
             <groupId>io.kroxylicious</groupId>
             <artifactId>kroxylicious-integration-test-support</artifactId>
-            <version>${kroxylicious.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -77,6 +80,13 @@
             <artifactId>testing-junit5-extension</artifactId>
             <version>${kroxylicious-testing-junit5-extension.version}</version>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId>
+            <version>${kafka.version}</version>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
