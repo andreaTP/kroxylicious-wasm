@@ -20,7 +20,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <chicory.version>1.5.3</chicory.version>
-        <kroxylicious.version>0.16.0</kroxylicious.version>
+        <kroxylicious.version>0.17.0</kroxylicious.version>
 
         <junit.version>6.0.0</junit.version>
         <log4j.version>2.25.2</log4j.version>
