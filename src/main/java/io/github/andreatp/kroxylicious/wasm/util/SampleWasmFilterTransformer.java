@@ -9,14 +9,15 @@ import com.dylibso.chicory.runtime.ByteArrayMemory;
 import com.dylibso.chicory.compiler.MachineFactoryCompiler;
 import com.dylibso.chicory.wasm.Parser;
 import io.github.andreatp.kroxylicious.wasm.config.SampleFilterConfig;
-import org.apache.kafka.common.compress.Compression;
-import org.apache.kafka.common.message.FetchResponseData;
-import org.apache.kafka.common.message.ProduceRequestData;
-import org.apache.kafka.common.record.AbstractRecords;
-import org.apache.kafka.common.record.MemoryRecordsBuilder;
-import org.apache.kafka.common.record.Record;
-import org.apache.kafka.common.record.RecordBatch;
-import org.apache.kafka.common.utils.ByteBufferOutputStream;
+import io.kroxylicious.kafka.common.compress.Compression;
+import io.kroxylicious.kafka.common.message.FetchResponseData;
+import io.kroxylicious.kafka.common.message.ProduceRequestData;
+import io.kroxylicious.kafka.common.utils.ByteBufferOutputStream;
+
+import io.kroxylicious.kafka.common.record.internal.AbstractRecords;
+import io.kroxylicious.kafka.common.record.internal.MemoryRecordsBuilder;
+import io.kroxylicious.kafka.common.record.internal.Record;
+import io.kroxylicious.kafka.common.record.internal.RecordBatch;
 
 import com.dylibso.chicory.runtime.ExportFunction;
 import com.dylibso.chicory.runtime.Instance;
