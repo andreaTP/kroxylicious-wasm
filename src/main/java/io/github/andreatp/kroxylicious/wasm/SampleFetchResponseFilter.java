@@ -2,8 +2,8 @@ package io.github.andreatp.kroxylicious.wasm;
 
 import java.util.concurrent.CompletionStage;
 
-import org.apache.kafka.common.message.FetchResponseData;
-import org.apache.kafka.common.message.ResponseHeaderData;
+import io.kroxylicious.kafka.common.message.FetchResponseData;
+import io.kroxylicious.kafka.common.message.ResponseHeaderData;
 
 import io.micrometer.core.instrument.Metrics;
 import io.micrometer.core.instrument.Timer;
